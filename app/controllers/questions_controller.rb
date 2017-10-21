@@ -1,6 +1,11 @@
 class QuestionsController < ApplicationController
 	def index
-		@questions = Question.all.order("created_at DESC")
+		if params[:tag]
+			@questions = Question.tagged_with(params[:tag]).order("created_at DESC")
+		else
+			@questions = Question.all.order("created_at DESC")
+		end
+		
 	end
 
 	def new
@@ -42,10 +47,8 @@ class QuestionsController < ApplicationController
 
 	private
 		def question_params
-			params.require(:question).permit(:title, :status, :tag_names, :description)
+			params.require(:question).permit(:title, :status, :tag_names, :body, :tag_list)
 		end
-
-
 
 end
 

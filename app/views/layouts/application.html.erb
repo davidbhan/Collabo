@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CollaboSmartone</title>
+    <title>Collabo</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
   </head>
 
   <body>
+
+    <div id="sidebar">
+      <div id="profile_pic">
+      </div>
+      <ul>
+        <li class="category"><%= link_to "Home", root_path %></li>
+      </ul>
+      <p class="sign_in">User Login</p>
+    </div>
+    <div id="main_content">
+      <div id="header">
+          <h2>COLLABO</h2>
+          <br>
+          <p><i>Boost your efficiency through collaboration</i></p>
+          <div class="row">
+          <div class="form-group mx-auto">
+            <input type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div id="below_header">
+      <div class="new_button"><%= link_to "+", new_question_path %></div>
+      </div>
     <%= yield %>
+  </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
 </html>

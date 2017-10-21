@@ -1,0 +1,172 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "normalize";
+
+ html, body {
+	font-family: 'Slabo 27px', serif;
+}
+
+a{
+	text-decoration: none;
+	color: inherit;
+}
+
+#sidebar{
+	width: 20vw;
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	background: #12A5F4;
+	padding: 10vh 0 0 0;
+	border-right: 1px solid #b8e2fe;
+	margin-right: 0;
+	#profile_pic{
+		margin: auto;
+		width: 10vw;
+		height: 20vh;
+		background-color:gainsboro;
+		border-radius: 100%;
+	}
+
+		ul {
+		list-style: none;
+		text-align: center;
+		.category {
+			font-weight: 900;
+			font-size: 3vw;
+			text-transform: uppercase;
+			color: #22747b;
+			position: absolute;
+			
+			left: 4.5vw;
+		}
+		li {
+			padding: 0;
+
+			a {
+				color: #FFF;
+				text-decoration: none;
+				transition: all .4s ease;
+				&:hover {
+					color: #3d4d56;
+				}
+			}
+		}
+		.active {
+			a {
+				color: #33acb7;
+			}
+		}
+	}
+
+
+}
+
+.button {
+	outline: none;
+	background: transparent;
+	border: 1.5px solid #FFF;
+	padding: .5em 2.5em;
+	border-radius: 0.5em;
+	&:hover {
+		border: 1px solid #333734;
+		color: #22487b;
+		a {
+			color: #22487b !important;
+		}
+	}
+}
+
+
+#main_content {
+	margin-left: 20vw;
+	padding: 5vh;
+	text-align: center;
+	#header {
+		padding: 0;
+		text-align: center;
+		h2{
+			font-weight: 900;
+			font-size: 8vh;
+			line-height: 0.5vh;
+			text-transform: uppercase;
+			color:#000d1a;
+			position: relative;
+			top: 0vh;
+		}
+		input{
+			margin-left: 12vw;
+			width: 55vw;
+		}
+		
+		
+		color: black;
+		p {
+			display: inline;
+			font-size: 2vh;
+		}
+		a {
+			
+			text-decoration: none;
+		}
+		.buttons {
+			float: right;
+			margin-top: -6px;
+			.button {
+				font-size: .8em;
+				margin-left: .5em;
+			}
+		}
+	}
+	.new_button {
+		font-weight: 900;
+		font-size: 3.5vw;
+		
+	}
+	#below_header{
+		text-align: right;
+		padding: 0;
+	}
+
+	input[type="text"], input[type="email"], input[type="password"], textarea {
+		width: 70%;
+		border: 1px solid #d6dce0;
+		border-radius: .35em;
+		margin-top: 20px;
+		padding: .5em 1em;
+		line-height: 1.75;
+	}
+	input[type="text"] {
+		height: 35px;
+	}
+	textarea {
+		min-height: 180px;
+	}
+	input[type="submit"] {
+		outline: none;
+		background: transparent;
+		border: 1px solid #d6dce0;
+		padding: .5em 1.5em;
+		font-size: 1.1em;
+		border-radius: 1.5em;
+		margin-left: .5em;
+		&:hover {
+			border: 1px solid #33acb7;
+			color: #33acb7;
+		}
+	}
+}
