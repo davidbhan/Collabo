@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171021035517) do
+ActiveRecord::Schema.define(version: 20171021042318) do
+
+  create_table "questions", force: :cascade do |t|
+    t.string "title"
+    t.string "location"
+    t.text "body"
+    t.string "status"
+    t.string "department"
+    t.boolean "resolved"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "taggings", force: :cascade do |t|
     t.integer "tag_id"
