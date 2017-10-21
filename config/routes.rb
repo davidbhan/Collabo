@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :questions
   resources :users
   root "questions#index"
+  get 'dashboard/index'
 end

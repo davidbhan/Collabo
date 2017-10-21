@@ -21,7 +21,6 @@
         <li class="category"><%= link_to "Home", root_path %></li>
         <div id="subcategory_div">
         <li id="log_out_link"><span class="glyphicon glyphicon-log-out"></span><%= link_to "Log out", destroy_user_session_path, :method => :delete  %></li>
-        <li class="subcategory"><%= link_to "My Questions",  user_path(current_user)%></li>
         
         <li class="subcategory">My Contributions</li>
         <li class="subcategory">Company Dashboard</li>

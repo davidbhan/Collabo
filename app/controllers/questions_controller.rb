@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
 	def index
+		
 		if params[:tag]
 			@questions = Question.tagged_with(params[:tag]).order("created_at DESC")
 		else

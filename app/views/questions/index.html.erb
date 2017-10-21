@@ -8,7 +8,7 @@
 
 <% end %>
 -->
-<div id="app" style="overflow-y: scroll; overflow-x: hidden; height: 80vh; margin-top: 0; ">
+<div id="app" style="overflow-y: scroll; overflow-x: hidden; height: 78vh; margin-top: 2vh; ">
 	<template v-if="isNewQuestion">
 	<%= render 'form' %>
 	</template>
@@ -28,7 +28,8 @@
 		</p>
 		</div>
 		<div class="col-sm-4">
-			<span class="skype-button rounded" data-contact-id="davidhan321" data-text=""></span>
+			<%= question.user_id %>
+			<span class="skype-button rounded" data-contact-id="davidhan321" data-text="Contact "></span>
 		</div>
 		</div>
 	</div>
