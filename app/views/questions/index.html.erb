@@ -1,14 +1,35 @@
+<!--
+<% if false %>
 <div id="tag_cloud">
 	<% tag_cloud Question.tag_counts, %w[m m m] do |tag, css_class|%>
 		<%= link_to tag.name, tag_path(tag.name), class: css_class %>
 	<% end %>
 </div>
 
-<h1>Questions</h1>
+<% end %>
+-->
+<div id="app" style="overflow-y: scroll; overflow-x: hidden; height: 70vh; ">
+	<template v-if="isNewQuestion">
+	<%= render 'form' %>
+	</template>
+	<template v-if="!isNewQuestion">
 <% @questions.each do |question| %>
 	<div>
-		<h2 class="title"><%= link_to question.title, question %></h2>
-		<p class="date"><%= time_ago_in_words(question.created_at) %></p>
+		<h2 class="title" style="color:black !important;"><%= link_to question.title, question, :style=> 'color:black;' %></h2>
+		<p class="date"><%= time_ago_in_words(question.created_at) %> ago</p>
 		<p>Tags: <%=raw question.tag_list.map{|t| link_to t, tag_path(t)}.join(', ') %></p>
 	</div>
-<% end %>		
+	<hr>
+<% end %>	
+</template>
+</div>	
+
+
+<script>
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			isNewQuestion: false
+		}
+	})
+</script>

@@ -11,6 +11,7 @@
 </p>
 <p>Tags: <%=raw @question.tag_list.map{|t| link_to t, tag_path(t)}.join(', ') %>
 </p>
+<p>By <%= @question.user.email %></p>
 <%= link_to "Edit", edit_question_path(@question) %>
 <%= link_to "Delete", question_path(@question), method: :delete, data:{confirm: "Are you sure?"} %>
 

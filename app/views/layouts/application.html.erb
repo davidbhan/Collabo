@@ -19,25 +19,48 @@
       </div>
       <ul>
         <li class="category"><%= link_to "Home", root_path %></li>
+        <div id="subcategory_div">
+        <li id="log_out_link"><span class="glyphicon glyphicon-log-out"></span><%= link_to "Log out", destroy_user_session_path, :method => :delete  %></li>
+        <li class="subcategory">My Questions</li>
+        <li class="subcategory">My Contributions</li>
+        <li class="subcategory">Company Dashboard</li>
+        </div>
       </ul>
-      <p class="sign_in">User Login</p>
     </div>
-    <div id="main_content">
+    <div id="main_content" class="container">
       <div id="header">
           <h2>COLLABO</h2>
           <br>
           <p><i>Boost your efficiency through collaboration</i></p>
-          <div class="row">
-          <div class="form-group mx-auto">
-            <input type="text" class="form-control">
-          </div>
+          <div class="below_header new_question">
+            <div id="tag_cloud" class="col-md-5">
+              <% tag_cloud Question.tag_counts, %w[m m m] do |tag, css_class|%>
+                <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+              <% end %>
+            </div>      
+            <div class="new_button"><%= link_to "+", new_question_path %></div>
         </div>
       </div>
-      <div id="below_header">
-      <div class="new_button"><%= link_to "+", new_question_path %></div>
+      <!--
+      <% if false %>
+      <div class="below_header new_question">
+        <div id="tag_cloud" class="col-md-5">
+          <% tag_cloud Question.tag_counts, %w[m m m] do |tag, css_class|%>
+            <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+          <% end %>
+        </div>
+      
+        <div class="new_button"><%= link_to "+", new_question_path %></div>
       </div>
+      <% end %>
+    -->
+    
+    <hr style="border-width:5px; background:#12A5F4; border-color:#12A5F4">
     <%= yield %>
   </div>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
   </body>
+  
 </html>
+
