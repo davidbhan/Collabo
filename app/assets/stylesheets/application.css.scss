@@ -107,9 +107,13 @@ a{
 			color: pink /*#22487b !important*/;
 		}
 	}
+
 }
-
-
+.btn{
+	a{
+		color:white !important; 
+	}
+}
 #main_content {
 	margin-left: 20vw;
 	padding: 0vw;
@@ -240,3 +244,11 @@ background-color:gainsboro;
 
 }
 
+.question_list{
+	padding-left: 3vw;
+	padding-right: 3vw;
+	h2, p{
+		text-align: left;
+	}
+
+}

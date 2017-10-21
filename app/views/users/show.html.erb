@@ -1,19 +1,5 @@
-<!--
-<% if false %>
-<div id="tag_cloud">
-	<% tag_cloud Question.tag_counts, %w[m m m] do |tag, css_class|%>
-		<%= link_to tag.name, tag_path(tag.name), class: css_class %>
-	<% end %>
-</div>
 
-<% end %>
--->
-<div id="app" style="overflow-y: scroll; overflow-x: hidden; height: 80vh; margin-top: 0; ">
-	<template v-if="isNewQuestion">
-	<%= render 'form' %>
-	</template>
-	<template v-if="!isNewQuestion">
-<% @questions.each do |question| %>
+<% @user_questions.each do |question| %>
 	<div class="question_list">
 		<div class="row">
 		<div class="col-sm-8">
@@ -33,16 +19,4 @@
 		</div>
 	</div>
 	<hr>
-<% end %>	
-</template>
-</div>	
-
-
-<script>
-	var vm = new Vue({
-		el:"#app",
-		data:{
-			isNewQuestion: false
-		}
-	})
-</script>
+<% end %>

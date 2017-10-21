@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
-
+    <script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>
   </head>
 
   <body>
@@ -21,7 +21,8 @@
         <li class="category"><%= link_to "Home", root_path %></li>
         <div id="subcategory_div">
         <li id="log_out_link"><span class="glyphicon glyphicon-log-out"></span><%= link_to "Log out", destroy_user_session_path, :method => :delete  %></li>
-        <li class="subcategory">My Questions</li>
+        <li class="subcategory"><%= link_to "My Questions",  user_path(current_user)%></li>
+        
         <li class="subcategory">My Contributions</li>
         <li class="subcategory">Company Dashboard</li>
         </div>
@@ -55,10 +56,11 @@
       <% end %>
     -->
     
-    <hr style="border-width:5px; background:#12A5F4; border-color:#12A5F4">
+    <hr style="border-width:5px; background:#12A5F4; border-color:#12A5F4; margin-bottom: 0">
     <%= yield %>
   </div>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>
 
   </body>
   

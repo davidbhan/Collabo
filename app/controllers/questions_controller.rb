@@ -8,13 +8,13 @@ class QuestionsController < ApplicationController
 		
 	end
 
+
 	def new
 		
 		@question = current_user.questions.build
 	end
 
-	def create
-		
+	def create		
 		@question = current_user.questions.new(question_params)
 		if @question.save
 			redirect_to @question
