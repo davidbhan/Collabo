@@ -1,0 +1,19 @@
+<div class="new_button"><%= link_to "+", new_question_path %></div>
+<div class="below_header new_question">
+            <div class="filter row">
+              <%= form_tag questions_path, method: :get do %>
+                <b class="col-xs-2" style="text-align: right;padding-top:3.3vh;">Search by Tags:</b>
+                <div class="col-xs-5" style="text-align: left;width:40vw;padding-top:0.8vh; padding-right: 0; margin-right:0; 
+                "><%= text_field_tag :title %></div>
+              <% end %>
+               <div id="tag_cloud" class="col-xs-5" style="position: fixed;left: 65vw; text-align:left;padding-top:3vh; left: 0l">
+              <% tag_cloud Question.tag_counts, %w[m m m] do |tag, css_class|%>
+                <button type="button" class="btn btn-primary"><%= link_to tag.name, tag_path(tag.name), class: css_class %></button>
+              <% end %>
+            </div>  
+
+            </div>
+            
+           
+          </div> 
+<hr class="thick_one"> 

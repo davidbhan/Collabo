@@ -8,12 +8,12 @@
 
 <% end %>
 -->
-<div id="app" style="overflow-y: scroll; overflow-x: hidden; height: 78vh; margin-top: 2vh; ">
-	<template v-if="isNewQuestion">
-	<%= render 'form' %>
-	</template>
-	<template v-if="!isNewQuestion">
+<%= render 'header_add_new' %>
+<div class="app" style="overflow-y: scroll; overflow-x: hidden; height: 70vh; margin-top: 2vh; ">
+	
 <% @questions.each do |question| %>
+	<% if !question.claimed? %>
+	
 	<div class="question_list">
 		<div class="row">
 		<div class="col-sm-8">
@@ -27,23 +27,39 @@
 			<% end %>
 		</p>
 		</div>
-		<div class="col-sm-4">
-			<%= question.user_id %>
-			<span class="skype-button rounded" data-contact-id="davidhan321" data-text="Contact "></span>
+		<div class="col-sm-4" style="padding-top:2.5vh">
+			<span class="skype-button rounded" data-contact-id="davidhan321" data-text="Contact "></span><br><br>
+			<button type="button" class="claim_btn"><span class="glyphicon glyphicon-ok"></span>&#32;&#32;<%= link_to "Claim", claim_question_path(question), method: :patch %></button>
+
 		</div>
 		</div>
 	</div>
+
+	<% else %>:
+		<div class="question_list" style="background-color:white">
+			<div class="row">
+			<div class="col-sm-8">
+			<h2 class="title" style="color:black !important;"><%= link_to question.title, question, :style=> 'color:black;' %></h2>
+			<p> <%= truncate(question.body, :length => 250) %></p>
+			<p class="date"><%= time_ago_in_words(question.created_at) %> ago</p>
+			<br>
+			<p>Tags:
+				<% question.tag_list.each do |t| %>
+					<button type="button" class="btn btn-primary"> <%= link_to t, tag_path(t) %> </button> 
+				<% end %>
+			</p>
+			</div>
+			<div class="col-sm-4">
+				<span class="skype-button rounded" data-contact-id="davidhan321" data-text="Contact "></span><br><br>
+				<button type="button" class="claim_btn_disabled">&#32;&#32;Claimed</button>
+
+			</div>
+			</div>
+		</div>
+	<% end %>
+	
+
 	<hr>
 <% end %>	
-</template>
+
 </div>	
-
-
-<script>
-	var vm = new Vue({
-		el:"#app",
-		data:{
-			isNewQuestion: false
-		}
-	})
-</script>

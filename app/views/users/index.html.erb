@@ -1,0 +1,32 @@
+<%= render 'header_add_new' %>
+<div class="app" style="overflow-y: scroll; overflow-x: hidden; height: 70vh; margin-top: 2vh; ">
+<%= current_user.id %>
+<% @questions.each do |question| %>
+	<div class="question_list">
+		<div class="row">
+		<div class="col-sm-8">
+		<h2 class="title" style="color:black !important;"><%= link_to question.title, question, :style=> 'color:black;' %></h2>
+		<p> <%= truncate(question.body, :length => 250) %></p>
+		<p class="date"><%= time_ago_in_words(question.created_at) %> ago</p>
+		<br>
+		<p>Tags:
+			<% question.tag_list.each do |t| %>
+				<button type="button" class="btn btn-primary"> <%= link_to t, tag_path(t) %> </button> 
+			<% end %>
+		</p>
+		</div>
+		<div class="col-sm-4" style="padding-top:2.5vh">
+			<div  class="claim_btn_disabled" title="If you can't wait, ask your question to Collabot!" style="width:100px; margin: auto;">&#32;&#32;Unclaimed</div>
+			
+
+		</div>
+		</div>
+	</div>
+	<% end %>
+	
+
+	<hr>
+    <span class="skype-button bubble " data-bot-id="8151148a-20ae-4fb8-a93c-2847295ef170" data-color="#004c68"></span>
+
+	
+</div>

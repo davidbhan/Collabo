@@ -11,12 +11,15 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require rails_bootstrap_forms
  *= require_self
  */
  @import "normalize";
 
  html, body {
 	font-family: 'Slabo 27px', serif;
+	overflow-x: hidden;
+	overflow-y: hidden;
 }
 
 a{
@@ -31,6 +34,8 @@ a{
 	left: 0;
 	top: 0;
 	height: 100%;
+
+	color:white !important;
 	background: #12A5F4;
 	padding: 10vh 0 0 0;
 	border-right: 1px solid #b8e2fe;
@@ -40,29 +45,40 @@ a{
 		top:4vh;
 		margin: auto;
 		width: 10vw;
-		height: 20vh;
+		height: 10vw;
 		background-color:gainsboro;
-		border-radius: 100%;
+		border-radius: 50%;
+		text-align: center;
+		vertical-align: middle;
+		h1{
+			font-weight: 900;
+			padding-top: 1.2vw;
+			font-size: 6vw;
+
+		}
 	}
 
 		ul {
 		margin: auto;
+		margin-left: 0;
 		list-style: none;
 		text-align: center;
 		.category {
 			font-weight: 900;
-			font-size: 3vw;
+			font-size: 2vw;
 			text-transform: uppercase;
 			color: #22747b;
-			position: relative;
-			top: 6vh;
+			position: fixed;
+			left:6vw;
+			top: 40vh;
+			
 			
 		}
 		#subcategory_div{
 			position:relative;
-			top:7vh;
-			font-size: 1vw !important;
-			color:white;
+			top:10vh;
+			font-size: vw !important;
+			color:black;/*white;*/
 		}
 		.subcategory {
 			font-weight: 300;
@@ -76,7 +92,7 @@ a{
 			padding: 0;
 
 			a {
-				color: #FFF;
+				color: white; /*home*/
 				text-decoration: none;
 				transition: all .4s ease;
 				&:hover {
@@ -117,17 +133,18 @@ a{
 #main_content {
 	margin-left: 20vw;
 	padding: 0vw;
-	width: 79vw;
+	width: 77vw;
 	text-align: center;
 
 	#header {
 		padding-top: 4vh;
 		text-align: center;
+		font-family: 'Montserrat', sans-serif;
 		h2{
 			font-weight: 900;
 			font-size: 8vh;
 			line-height: 0.5vh;
-			text-transform: uppercase;
+			/*text-transform: uppercase;*/
 			color:#000d1a;
 			position: relative;
 			top: 0vh;
@@ -161,11 +178,14 @@ a{
 			margin: .5em 0 0 0;
 	}
 	.new_button {
+		position:fixed;
+		top:15vh;
 		font-weight: 900;
 		font-size: 3.5vw;
-		margin-right: 3vw;
+		right: 3vw;
 		line-height: 0;
 		padding: 0;
+
 		
 	}
 	.below_header{
@@ -230,16 +250,16 @@ a{
 	line-height: 0;
 }
 
-#app::-webkit-scrollbar{
+.app::-webkit-scrollbar{
 background-color:#12A5F4;
 } 
 
-#app::-webkit-scrollbar-thumb{
+.app::-webkit-scrollbar-thumb{
 background-color:#12A5F4;
 border-radius:10px;
 }
 
-#app::-webkit-scrollbar-track-piece{
+.app::-webkit-scrollbar-track-piece{
 background-color:gainsboro;
 
 }
@@ -254,6 +274,55 @@ background-color:gainsboro;
 }
 
 .skype-button{
-	margin-top: 3vh !important;
+	margin-top: 7vh !important;
 	position: absolute;
+}
+hr{
+	line-height: 0;
+	margin: 0;
+}
+
+.claim_btn{
+	background: #00aff0;
+	color: white;
+	border-radius:20px;
+	border: none;
+	padding: 6px 23px;
+
+	a{
+		color:white;
+		font-size: 15px;
+	}
+
+
+}
+
+.claim_btn_disabled{
+	background: gainsboro;
+	color: white;
+	border-radius:20px;
+	border: none;
+	padding: 6px 23px;
+
+	p{
+		color:white;
+		font-size: 15px;
+	}
+
+
+}
+
+.progress{
+	background: white;
+	border: solid #12A5F4;
+	border-radius:20px;
+	padding: 6px 23px;
+
+}
+
+hr.thick_one{
+	border-width:5px;
+	background:#12A5F4;
+	border-color:#12A5F4;
+	margin-bottom: 0;
 }

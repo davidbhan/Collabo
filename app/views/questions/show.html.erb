@@ -1,3 +1,8 @@
+<%= render 'header_add_new' %>
+
+<% if flash[:notice] %>
+	<div class="notice alert-success"><%= flash[:notice] %></div>
+<% end %>
 <h1 class="title">
 	<%= @question.title %>
 </h1>
@@ -14,5 +19,8 @@
 <p>By <%= @question.user.email %></p>
 <%= link_to "Edit", edit_question_path(@question) %>
 <%= link_to "Delete", question_path(@question), method: :delete, data:{confirm: "Are you sure?"} %>
+
+
+
 
 

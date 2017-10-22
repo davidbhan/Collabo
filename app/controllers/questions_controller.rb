@@ -1,10 +1,16 @@
 class QuestionsController < ApplicationController
 	def index
-		
+
 		if params[:tag]
-			@questions = Question.tagged_with(params[:tag]).order("created_at DESC")
+			@questions = Question.tagged_with(params[:tag])
+			if params["title"]
+				@questions = @questions.where(title: params["title"]).order("created_at DESC")
+			end
 		else
-			@questions = Question.all.order("created_at DESC")
+			@questions = Question.all
+			if params["title"]
+				@questions =  @questions.where(title: params["title"]).order("created_at DESC")
+			end
 		end
 		
 	end
@@ -22,6 +28,17 @@ class QuestionsController < ApplicationController
 		else
 			render 'new'
 		end
+	end
+	def claim
+		@question = Question.find(params[:id])
+		@question.update_attribute(:claimed_at, Time.now)
+		@user_id = current_user.email
+		
+		@question.update_attribute(:claimed_by, @user_id)
+			flash[:notice] = "Successfully claimed the question! Keep collaborating! :)"
+		
+		redirect_to @question 
+
 	end
 
 	def show

@@ -1,5 +1,8 @@
-
+<%= render 'header_add_new' %>
+<div class="app" style="overflow-y: scroll; overflow-x: hidden; height: 78vh; margin-top: 2vh; ">
 <% @user_questions.each do |question| %>
+	<% if !question.claimed? %>
+	
 	<div class="question_list">
 		<div class="row">
 		<div class="col-sm-8">
@@ -13,11 +16,42 @@
 			<% end %>
 		</p>
 		</div>
-		<div class="col-sm-4">
-			<%= question.user.email %>
-			<span class="skype-button rounded" data-contact-id="davidhan321" data-text=""></span>
+		<div class="col-sm-4" style="padding-top:2.5vh">
+			<div  class="claim_btn_disabled" title="If you can't wait, ask your question to Collabot!" style="width:100px; margin: auto;">&#32;&#32;Unclaimed</div>
+			
+
 		</div>
 		</div>
 	</div>
+
+	<% else %>:
+		<div class="question_list" >
+			<div class="row">
+			<div class="col-sm-8">
+			<h2 class="title" style="color:black !important;"><%= link_to question.title, question, :style=> 'color:black;' %></h2>
+			<p> <%= truncate(question.body, :length => 250) %></p>
+			<p class="date"><%= time_ago_in_words(question.created_at) %> ago</p>
+			<br>
+			<p>Tags:
+				<% question.tag_list.each do |t| %>
+					<button type="button" class="btn btn-primary"> <%= link_to t, tag_path(t) %> </button> 
+				<% end %>
+			</p>
+			</div>
+			<div class="col-sm-4">
+
+				<button type="button" class="claim_btn_disabled" style="background-color:white !important; border: solid #12A5F4;color:#12A5F4;padding:8px 15px;">&#32;&#32;In Progress...</button><br><br>
+				<span class="skype-button rounded" data-contact-id="davidhan321" data-text="Contact Helper"></span><br><br>
+				<button type="button" class="claim_btn_disabled" style="background-color: #12A5F4 !important; color:white;padding:8px 12px;">&#32;&#32;Mark as Completed</button>
+
+
+			</div>
+			</div>
+		</div>
+	<% end %>
+	
+
 	<hr>
-<% end %>
+<% end %>	
+</div>
+

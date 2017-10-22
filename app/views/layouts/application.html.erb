@@ -7,39 +7,37 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>
+
   </head>
 
   <body>
 
     <div id="sidebar">
       <div id="profile_pic">
+        <h1>S</h1>
       </div>
       <ul>
-        <li class="category"><%= link_to "Home", root_path %></li>
+        <li class="category"><%= link_to "Smartone", root_path %></li>
         <div id="subcategory_div">
         <li id="log_out_link"><span class="glyphicon glyphicon-log-out"></span><%= link_to "Log out", destroy_user_session_path, :method => :delete  %></li>
-        
-        <li class="subcategory">My Contributions</li>
-        <li class="subcategory">Company Dashboard</li>
+        <% if current_user %>
+        <li class="subcategory"><%= link_to "My Questions",  user_path(current_user)%></li>
+        <% end %>
+        <li class="subcategory"><%= link_to "My Contributions", users_path %></li>
+        <li class="subcategory"><%= link_to "Company Dashboard", dashboard_index_path %></li>
         </div>
       </ul>
     </div>
     <div id="main_content" class="container">
       <div id="header">
-          <h2>COLLABO</h2>
+          <h2>Collabo</h2>
           <br>
-          <p><i>Boost your efficiency through collaboration</i></p>
-          <div class="below_header new_question">
-            <div id="tag_cloud" class="col-md-5">
-              <% tag_cloud Question.tag_counts, %w[m m m] do |tag, css_class|%>
-                <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-              <% end %>
-            </div>      
-            <div class="new_button"><%= link_to "+", new_question_path %></div>
-        </div>
+          <p><i>Have a question? Ask your colleagues!</i></p>
+          <br>  
       </div>
       <!--
       <% if false %>
@@ -55,10 +53,13 @@
       <% end %>
     -->
     
-    <hr style="border-width:5px; background:#12A5F4; border-color:#12A5F4; margin-bottom: 0">
+    
     <%= yield %>
   </div>
+      
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <span class="skype-button bubble " data-bot-id="8151148a-20ae-4fb8-a93c-2847295ef170" data-color="#004c68"></span>
     <script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>
 
   </body>
